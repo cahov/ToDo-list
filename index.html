@@ -10,18 +10,21 @@
 </head>
 <body>
     <header>
-        <h1 id="info">Miercoles 13 de septiembre 2022</h1>
+        <h1>To-Do List</h1>
+        <p class="fecha"></p> 
     </header>
     <main>
         <div class="contenedor">
             <div class="area-work">
-                <input type="text" id="input_task">
-                <button id="btn_add">Añadir</button>
+                <input type="text" id="input_task" maxlength="20" placeholder="Escribir tarea...">
+                <button id="btn_add">+</button>
+                <button id="btn_remove_all">x</button>
             </div>
             <div class="area-list">
-                <ul class="list_tasks"></ul>
+                <ul class="list-tasks" id="list_task"></ul>
             </div>
         </div>
+        
     </main>
     <script src="main.js"></script>
 </body>
