@@ -4,21 +4,16 @@ const btnRemoveAll = document.getElementById("btn_remove_all");
 const listTask = document.getElementById("list_task");
 const areaList= document.querySelector(".area-list");
 let tareas = [];
-//pepe.push({contenido: "hola mundo 2", estado: "uncheck 2"});
-//localStorage.tarea = JSON.stringify(pepe);
 let cosas = JSON.parse(localStorage.getItem("tarea"));
 task.value="";
 mueveReloj();
 document.addEventListener("DOMContentLoaded", function(){
-    console.log("hagi algo");
     for(let i=0; i<cosas.length;i++){
         if(cosas[i].estado=="check"){
             createList(cosas[i].contenido,cosas[i].estado);
         }else{
             createList(cosas[i].contenido);
         }
-        console.log(cosas[i].contenido);
-        console.log(cosas[i].estado);
     }
 })
 
@@ -50,13 +45,13 @@ function createList(text, status="uncheck"){
         localStorage.tarea = JSON.stringify(tareas);
         task.value="";
     }else{
-        alert("No puede estar vacia la tarea");
+        alert("La tarea no debe estar vacia");
     }
     
 }
 
-
 btnAdd.addEventListener("click", function(){
+    event.preventDefault();
     createList(task.value);
 })
 
@@ -70,9 +65,7 @@ btnRemoveAll.addEventListener("click", function(){
 
 function closeTask(span, x){
     span.parentElement.remove();
-    console.log("El indice del eliminado fue "+x);
     tareas.splice(x,1);
-    console.log(tareas);
     localStorage.tarea = JSON.stringify(tareas);
     
 }
@@ -81,7 +74,6 @@ function closeTask(span, x){
 
 function togleCheck(li,indice, span){
     if(document.body.contains(span)){
-        console.log("me dolio :c");
         if(tareas[indice].estado=="check"){
             tareas[indice].estado="uncheck";
         }else{
@@ -89,8 +81,6 @@ function togleCheck(li,indice, span){
         }
         localStorage.tarea = JSON.stringify(tareas);
         li.classList.toggle("check");
-    }else{
-        console.log("No paso nada :D");
     }
     
 }
